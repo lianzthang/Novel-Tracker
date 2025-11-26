@@ -1,0 +1,86 @@
+/* style.css */
+
+/* --- General Button Styling (Applies to all new buttons) --- */
+.compact-btn {
+    /* Base style override to look like a clean button */
+    display: inline-block !important;
+    cursor: pointer !important;
+    padding: 6px 8px !important;
+    border-radius: 4px !important;
+    text-decoration: none !important;
+    font-size: 13px !important;
+    line-height: 1 !important; /* Fixes vertical alignment */
+    text-align: center !important;
+    border: none !important;
+    box-sizing: border-box !important;
+    font-weight: normal !important;
+    transition: background-color 0.15s ease;
+}
+
+/* Hover/Active states */
+.compact-btn:hover {
+    opacity: 0.9;
+    text-decoration: none !important;
+}
+
+/* Disabled state */
+.compact-btn[disabled],
+.compact-btn[aria-disabled="true"] {
+    opacity: 0.6 !important;
+    pointer-events: none !important;
+}
+
+/* --- Category Specific Colors --- */
+
+.btn-novel-reading {
+    background-color: #4CAF50 !important; /* Green */
+    color: white !important;
+}
+
+.btn-novel-disliked {
+    background-color: #ff4d4f !important; /* Red */
+    color: white !important;
+}
+
+.btn-novel-hiatus {
+    background-color: #ffc107 !important; /* Yellow */
+    color: #333 !important; /* Dark text for yellow background */
+}
+
+.btn-novel-completed {
+    background-color: #20c997 !important; /* Teal */
+    color: white !important;
+}
+
+.btn-novel-unmarked {
+    background-color: #6c757d !important; /* Gray */
+    color: white !important;
+}
+
+
+/* --- Chapter Page Specific Overrides --- */
+
+/* Ensure the LI container works correctly with the button */
+.tools ul li.chapter-hider-li {
+    /* This overrides the host site's LI padding/margin and ensures the button is centered */
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 4px !important; /* Add spacing between buttons */
+    margin: 0 !important;
+}
+
+.tools ul li.chapter-hider-li .compact-btn {
+    margin: 0 !important; /* No margin on the button itself */
+}
+
+
+/* --- Single Novel Page Specific Overrides --- */
+/* The buttons for the single page are inside the .novel-hider-buttons div */
+.novel-hider-buttons .compact-btn {
+    margin-left: 0 !important; /* Reset margin */
+}
+
+.novel-hider-buttons .compact-btn + .compact-btn {
+    margin-left: 10px !important; /* Only apply margin between buttons */
+}

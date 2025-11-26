@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Novel Tracker",
+  "version": "1.1",
+  "description": "Custom extension to hide disliked novels and track reading progress on yournovelhost.com.",
+  "icons": {
+    "16": "assets/icon16.png",
+    "48": "assets/icon48.png",
+    "128": "assets/icon128.png"
+  },
+  "permissions": ["storage"],
+  "options_page": "pages/options.html",  
+    "content_scripts": [
+    {
+      "matches": [
+        "https://twkan.com/*"
+      ],
+      "css": ["style/style.css"],
+      "js": ["scripts/content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

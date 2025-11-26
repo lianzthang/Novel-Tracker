@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Novel Hider Options</title>
+    <meta charset="utf-8">
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; min-width: 600px; }
+        h1 { border-bottom: 2px solid #ccc; padding-bottom: 10px; }
+        ul { list-style: none; padding: 0; }
+        li { 
+            padding: 10px; 
+            margin-bottom: 8px; 
+            border: 1px solid #eee; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            border-radius: 4px;
+            gap: 10px; 
+        }
+        
+        /* CATEGORY STYLES */
+        li.reading { border-left: 5px solid #4CAF50; background-color: #f7fff7; }
+        li.disliked { border-left: 5px solid #f44336; background-color: #fff7f7; }
+        li.hiatus { border-left: 5px solid #ffc107; background-color: #fffaf5; }
+        li.completed { border-left: 5px solid #20c997; background-color: #f7fffb; }
+        
+        .novel-info { max-width: 45%; flex-grow: 1;}
+        .novel-title { font-weight: bold; }
+        .novel-url { font-size: 0.8em; color: #666; display: block; }
+        .novel-category { font-size: 0.9em; color: #1e88e5; font-style: italic; display: block; margin-top: 5px; }
+
+        .novel-actions { 
+            display: flex; 
+            gap: 5px; 
+            flex-wrap: wrap; /* Allows buttons to wrap if space is tight */
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .options-btn {
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 11px; /* Smaller font for category buttons */
+            cursor: pointer;
+            border-radius: 4px;
+            flex-shrink: 0;
+            opacity: 1;
+        }
+        
+        .options-btn[disabled] {
+            opacity: 0.4;
+            cursor: default;
+        }
+
+        /* ⚠️ BUTTON COLORS FOR ACTIONS */
+        .unmark-btn { background-color: #555555; font-size: 13px; }
+        .action-reading { background-color: #4CAF50; }
+        .action-disliked { background-color: #f44336; }
+        .action-hiatus { background-color: #ffc107; color: #333; }
+        .action-completed { background-color: #20c997; }
+
+        #clear-all-btn {
+            background-color: #f44336;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        /* Counts Styling */
+        .counts-container { 
+            margin-top: 20px; 
+            padding: 10px; 
+            border: 1px solid #ccc; 
+            border-radius: 4px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .count-item { font-size: 1.1em; }
+        .count-item span { font-weight: bold; margin-left: 5px; }
+        
+        /* Filter Button Styling */
+        .filter-btn { background-color: #03A9F4; }
+        .filter-btn.active {
+            background-color: #000;
+        }
+        #filter-hiatus { background-color: #ffc107; color: #333; }
+        #filter-completed { background-color: #20c997; }
+    </style>
+</head>
+<body>
+    <h1>Novel Hider Options</h1>
+
+    <button id="clear-all-btn" class="options-btn">Clear All Tracked Novels</button>
+    
+    <h2>Summary Counts:</h2>
+    <div id="counts-container" class="counts-container">
+        <div class="count-item">Total Tracked: <span id="total-count">0</span></div>
+        <div class="count-item">Reading: <span id="reading-count">0</span></div>
+        <div class="count-item">Disliked: <span id="disliked-count">0</span></div>
+        <div class="count-item">Hiatus: <span id="hiatus-count">0</span></div>
+        <div class="count-item">Completed: <span id="completed-count">0</span></div>
+    </div>
+    
+    <h2>Tracked Novel List:</h2>
+    <h3>Filter:</h3>
+    <div id="filter-controls" class="button-group" style="margin-bottom: 15px;">
+        <button id="filter-all" class="options-btn filter-btn active" data-filter="all">Show All</button>
+        <button id="filter-reading" class="options-btn filter-btn" data-filter="reading">Reading</button>
+        <button id="filter-disliked" class="options-btn filter-btn" data-filter="disliked">Disliked</button>
+        <button id="filter-hiatus" class="options-btn filter-btn" data-filter="hiatus">Hiatus</button>
+        <button id="filter-completed" class="options-btn filter-btn" data-filter="completed">Completed</button>
+    </div>
+
+    <ul id="hidden-list">
+        <li>Loading...</li>
+    </ul>
+
+    <script src="scripts/options.js"></script>
+</body>
+</html>
