@@ -8,12 +8,20 @@
     "48": "assets/icon48.png",
     "128": "assets/icon128.png"
   },
-  "permissions": ["storage"],
-  "options_page": "pages/options.html",  
-    "content_scripts": [
+
+    "permissions": ["storage"],
+      "options_page": "pages/options.html",  
+  "host_permissions": [
+    "https://twkan.com/*",
+    "https://example-new-site.net/*",  
+    "https://another-site.org/*"       
+  ],
+  "content_scripts": [
     {
       "matches": [
-        "https://twkan.com/*"
+        "https://twkan.com/*",
+        "https://example-new-site.net/*",  
+        "https://another-site.org/*" 
       ],
       "css": ["style/style.css"],
       "js": ["scripts/content.js"],
